@@ -1,5 +1,6 @@
 import React from 'react'
 import './Hero.css'
+import productMockup from '../assets/product_mockup.png'
 
 function Hero({ onOpenEarlyAccess }) {
   return (
@@ -15,6 +16,11 @@ function Hero({ onOpenEarlyAccess }) {
             <h1 className="hero-headline">Where APIs are born secure</h1>
             <p className="hero-subtext tagline">Design → Publish Securely → Test → Subscribe → Consume</p>
             <p className="hero-subtext">Floqen unifies the entire API lifecycle into a single AI-driven platform.</p>
+            <div className="hero-mockup">
+              <div className="mockup-frame">
+                <img src={productMockup} alt="Floqen product mockup" className="mockup-img" />
+              </div>
+            </div>
             <div className="hero-ctas">
               <button className="cta-primary" onClick={() => onOpenEarlyAccess?.()}>Get Early Access</button>
             </div>

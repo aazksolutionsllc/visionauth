@@ -100,6 +100,11 @@
   animation: fadeInUp 1s ease-out 0.2s both;
 }
 
+/* Reduce space between tagline and following line on desktop */
+.hero-subtext.tagline {
+  margin-bottom: 0.6rem;
+}
+
 .hero-ctas {
   display: flex;
   gap: 1.5rem;
@@ -110,10 +115,10 @@
 
 .cta-primary,
 .cta-secondary {
-  padding: 1rem 2.5rem;
-  font-weight: 600;
-  border-radius: 10px;
-  font-size: 1rem;
+  padding: 1.15rem 3rem;
+  font-weight: 700;
+  border-radius: 12px;
+  font-size: 1.08rem;
   cursor: pointer;
   transition: all 0.3s ease;
   border: 2px solid transparent;
@@ -154,6 +159,33 @@
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+.hero-mockup { 
+  margin: 1.2rem auto 2.6rem; 
+  display: flex; 
+  justify-content: center;
+  perspective: 1200px;
+}
+.mockup-frame {
+  width: min(920px, 95%);
+  transform-style: preserve-3d;
+  transform: perspective(1200px) rotateX(10deg) rotateY(-8deg);
+  animation: mockFloat 10s ease-in-out infinite;
+}
+.mockup-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow:
+    0 40px 90px rgba(0,0,0,.45),
+    0 16px 30px rgba(0,0,0,.35),
+    inset 0 0 0 1px rgba(255,255,255,.06);
+}
+@keyframes mockFloat {
+  0%, 100% { transform: perspective(1200px) rotateX(10deg) rotateY(-8deg) translateY(0); }
+  50% { transform: perspective(1200px) rotateX(8deg) rotateY(-3deg) translateY(-6px); }
 }
 
 .stream-line {
@@ -221,11 +253,16 @@
     flex-direction: column;
     align-items: center;
   }
+  .mockup-frame {
+    width: min(720px, 98%);
+    transform: perspective(1000px) rotateX(6deg) rotateY(-4deg);
+  }
+  .mockup-img { border-radius: 14px; }
   
   .cta-primary,
   .cta-secondary {
     width: 100%;
-    max-width: 300px;
+    max-width: 340px;
     margin: 0 auto;
   }
 }
