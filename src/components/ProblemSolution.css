@@ -1,0 +1,226 @@
+.problem-solution {
+  padding: 4rem 2rem;
+  position: relative;
+  background: linear-gradient(180deg, var(--bg-deep-navy) 0%, rgba(10, 34, 57, 0.5) 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--white) 0%, var(--secondary-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ps-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.ps-column {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(56, 176, 192, 0.1);
+  border-radius: 20px;
+  padding: 3rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ps-column:nth-child(1) {
+  animation: slideInFromLeft 0.8s ease-out;
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+}
+
+.ps-column:nth-child(2) {
+  animation: slideInFromRight 0.8s ease-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+.ps-column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(56, 176, 192, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.ps-column:hover {
+  transform: translateY(-10px);
+  border-color: rgba(56, 176, 192, 0.3);
+  box-shadow: 0 20px 60px rgba(56, 176, 192, 0.2);
+}
+
+.ps-column:hover::before {
+  left: 100%;
+}
+
+.icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ps-icon-abs {
+  position: absolute;
+  left: -2rem;
+  top: 2.5rem;
+}
+
+.icon-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.icon-pulse {
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.25) 0%, transparent 70%);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.icon-sparkle {
+  background: radial-gradient(circle, rgba(56, 176, 192, 0.4) 0%, transparent 70%);
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+.icon-glow {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.15) 0%, transparent 70%);
+  z-index: -1;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.icon-glow-solution {
+  background: radial-gradient(circle, rgba(56, 176, 192, 0.25) 0%, transparent 70%);
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ps-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.ps-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--soft-gray);
+}
+
+@media (max-width: 768px) {
+  .problem-solution {
+    padding: 4rem 1rem;
+  }
+  
+  .ps-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .ps-column {
+    padding: 2rem;
+  }
+}
+

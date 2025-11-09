@@ -1,0 +1,120 @@
+.integrations {
+  padding: 8rem 2rem;
+  background: linear-gradient(180deg, var(--bg-deep-navy) 0%, rgba(10, 34, 57, 0.8) 100%);
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--soft-gray);
+  margin-top: 1rem;
+}
+
+.integrations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+/* Scrolling logo marquee */
+.logo-marquee { margin-top: 2.5rem; }
+.marquee-viewport { position: relative; overflow: hidden; mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%); }
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+  padding: .5rem 0;
+  will-change: transform;
+  animation: scroll-left 28s linear infinite;
+}
+.logo-marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-item { display: inline-flex; align-items: center; gap: .8rem; color: var(--soft-gray); white-space: nowrap; }
+.marquee-logo { width: 72px; height: 72px; object-fit: contain; filter: grayscale(.1) saturate(1.05); }
+.marquee-logo-fallback { font-size: 1.6rem; }
+.marquee-name { font-weight: 600; color: var(--white); opacity: .9; }
+.marquee-fade-left, .marquee-fade-right { position: absolute; top: 0; width: 60px; height: 100%; pointer-events: none; }
+.marquee-fade-left { left: 0; background: linear-gradient(to right, rgba(10,34,57,1), rgba(10,34,57,0)); }
+.marquee-fade-right { right: 0; background: linear-gradient(to left, rgba(10,34,57,1), rgba(10,34,57,0)); }
+
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* (removed identity hub experimental styles) */
+
+.integration-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(56, 176, 192, 0.1);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.integration-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(56, 176, 192, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.integration-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(56, 176, 192, 0.4);
+  box-shadow: 0 15px 40px rgba(56, 176, 192, 0.2);
+}
+
+.integration-card:hover .integration-glow {
+  opacity: 1;
+}
+
+.integration-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  filter: grayscale(0.3);
+  transition: all 0.3s ease;
+}
+
+.integration-icon-img {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 0.6rem;
+  filter: grayscale(0.2) saturate(1.1);
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+  object-fit: contain;
+}
+
+.integration-card:hover .integration-icon {
+  transform: scale(1.2);
+  filter: grayscale(0);
+}
+
+.integration-card:hover .integration-icon-img {
+  transform: scale(1.08);
+  filter: grayscale(0) saturate(1.15);
+}
+
+.integration-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .marquee-logo { width: 52px; height: 52px; }
+  .integrations-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .integration-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
