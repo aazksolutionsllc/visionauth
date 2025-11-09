@@ -85,12 +85,122 @@
   box-shadow: 0 10px 25px rgba(56, 176, 192, 0.3);
 }
 
+/* Hamburger button and mobile menu */
+.nav-burger {
+  display: none;
+  background: transparent;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--white);
+}
+.nav-burger:focus { outline: 2px solid rgba(56, 176, 192, 0.6); outline-offset: 2px; }
+.burger-lines,
+.burger-lines::before,
+.burger-lines::after {
+  content: '';
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  position: relative;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.burger-lines::before { position: absolute; top: -7px; left: 0; }
+.burger-lines::after  { position: absolute; top: 7px;  left: 0; }
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 34, 57, 0.96);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8%);
+  transition: transform .25s ease, opacity .25s ease, visibility .25s ease;
+  z-index: 120;
+  pointer-events: none;
+}
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.mobile-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem;
+}
+.mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 0 1rem;
+}
+.nav-close {
+  background: transparent;
+  border: 1px solid rgba(56, 176, 192, .35);
+  color: var(--white);
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+.mobile-links .nav-link { font-size: 1.1rem; opacity: 1; }
+.mobile-cta { width: 100%; margin-top: .5rem; }
+
 @media (max-width: 768px) {
   .nav-container {
     padding: 0.75rem 1rem;
   }
   .nav-left, .nav-right { gap: 0.75rem; }
   .logo-tagline { display: none; }
+  /* Use burger layout at tablet and below */
+  .nav-three { grid-template-columns: 1fr auto; }
+  .nav-left, .nav-right { display: none; }
+  .nav-logo { justify-content: flex-start; }
+  .nav-burger { display: inline-flex; justify-self: end; }
+}
+
+/* Compact mobile layout */
+@media (max-width: 640px) {
+  .nav-three {
+    grid-template-columns: 1fr auto;
+  }
+  .nav-left {
+    display: none;
+  }
+  .nav-logo {
+    justify-content: flex-start;
+  }
+  .nav-right { display: none; }
+  .nav-burger { display: inline-flex; justify-self: end; }
+  .nav-button {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+  .logo-text {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  /* Ensure mobile overlay never appears on desktop */
+  .mobile-menu { display: none !important; }
+  .nav-burger { display: none !important; }
 }
 
 

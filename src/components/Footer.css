@@ -86,5 +86,10 @@
   .footer-link:hover {
     transform: none;
   }
+  
+  /* Keep the short tagline on a single line for mobile */
+  .footer-tagline {
+    white-space: nowrap;
+  }
 }
 

@@ -35,6 +35,31 @@
   background-clip: text;
 }
 
+/* Ensure lifecycle title stays single-line and scales on small screens */
+@media (max-width: 768px) {
+  .lifecycle .section-title {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    line-height: 1.15;
+    letter-spacing: -0.012em;
+    word-spacing: -0.05em;
+  }
+}
+
+@media (max-width: 480px) {
+  .lifecycle .section-title {
+    font-size: clamp(1.15rem, 5.2vw, 1.5rem);
+    letter-spacing: -0.016em;
+    word-spacing: -0.06em;
+  }
+}
+
+@media (max-width: 420px) {
+  .lifecycle .section-title {
+    font-size: 1.0rem;
+  }
+}
+
 /* Living Path timeline layout */
 /* Cinematic Carousel */
 .carousel {
@@ -348,12 +373,15 @@
 @media (max-width: 968px) {
   .lifecycle-item {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: center;
   }
   /* Remove side margins and keep all cards same width */
   .lifecycle-item-left .lifecycle-content,
   .lifecycle-item-right .lifecycle-content { margin: 0; }
   .lifecycle-content { --lifecycle-card-height: 320px; }
   .item-description { -webkit-line-clamp: 5; }
+  /* Hide icons on mobile per request */
   .timeline-icon-wrapper { display: none; }
   .row-beam { display: none; }
 }

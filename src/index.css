@@ -27,3 +27,42 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Global container for consistent alignment */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}
+
+/* iPhone 14 portrait (430px) and below */
+@media (max-width: 430px) {
+  .container {
+    padding: 0 0.25rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Add a narrow tweak for 480px to give titles a bit more room */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+}
+
