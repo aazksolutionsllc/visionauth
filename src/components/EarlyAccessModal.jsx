@@ -11,6 +11,8 @@ function EarlyAccessModal({ open, onClose }) {
     phone: '',
   })
   const [errors, setErrors] = React.useState({})
+  const [submitting, setSubmitting] = React.useState(false)
+  const [submitMessage, setSubmitMessage] = React.useState('')
   const backdropRef = React.useRef(null)
 
   React.useEffect(() => {
@@ -35,12 +37,46 @@ function EarlyAccessModal({ open, onClose }) {
     return Object.keys(next).length === 0
   }
 
-  function submit(e) {
+  async function submit(e) {
     e.preventDefault()
+    setSubmitMessage('')
     if (!validate()) return
-    // Placeholder submission - integrate with backend or email service later
-    console.log('Early Access submission', form)
-    onClose?.()
+    const FORMSPREE_ID =
+      (typeof window !== 'undefined' && window.FLOQEN_FORMSPREE_ID) ||
+      import.meta.env.VITE_FORMSPREE_ID ||
+      'REPLACE_WITH_FORMSPREE_ID'
+    if (!FORMSPREE_ID || FORMSPREE_ID.includes('REPLACE_WITH')) {
+      setSubmitMessage('Form endpoint not configured. Add your Formspree ID.')
+      return
+    }
+    const endpoint = `https://formspree.io/f/${FORMSPREE_ID}`
+    // For security, do not send plaintext passwords over email
+    const payload = {
+      region: form.region,
+      email: form.email,
+      fullName: form.fullName,
+      company: form.company,
+      phone: form.phone,
+      _subject: 'Floqen Early Access Request',
+      _format: 'json',
+    }
+    try {
+      setSubmitting(true)
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      setSubmitMessage('Thanks! We\'ll be in touch shortly.')
+      setTimeout(() => {
+        setSubmitting(false)
+        onClose?.()
+      }, 900)
+    } catch (err) {
+      setSubmitting(false)
+      setSubmitMessage('Something went wrong. Please try again.')
+    }
   }
 
   return (
@@ -141,9 +177,10 @@ function EarlyAccessModal({ open, onClose }) {
           </div>
 
           <div className="ea-actions ea-row-full">
-            <button type="button" className="ea-btn ghost" onClick={onClose}>Cancel</button>
-            <button type="submit" className="ea-btn primary">Submit</button>
+            <button type="button" className="ea-btn ghost" onClick={onClose} disabled={submitting}>Cancel</button>
+            <button type="submit" className="ea-btn primary" disabled={submitting}>{submitting ? 'Sending…' : 'Submit'}</button>
           </div>
+          {submitMessage && <div className="ea-row-full ea-hint" role="status">{submitMessage}</div>}
         </form>
       </div>
     </div>
