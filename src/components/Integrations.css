@@ -29,9 +29,15 @@
 }
 .logo-marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-item { display: inline-flex; align-items: center; gap: .8rem; color: var(--soft-gray); white-space: nowrap; }
-.marquee-logo { width: 72px; height: 72px; object-fit: contain; filter: grayscale(.1) saturate(1.05); }
 .marquee-logo-fallback { font-size: 1.6rem; }
-.marquee-name { font-weight: 600; color: var(--white); opacity: .9; }
+.marquee-name { font-weight: 600; color: var(--white); opacity: .95; }
+.marquee-pill {
+  padding: .5rem .9rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(56,176,192,0.25);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18), inset 0 0 0 1px rgba(255,255,255,0.02);
+}
 .marquee-fade-left, .marquee-fade-right { position: absolute; top: 0; width: 60px; height: 100%; pointer-events: none; }
 .marquee-fade-left { left: 0; background: linear-gradient(to right, rgba(10,34,57,1), rgba(10,34,57,0)); }
 .marquee-fade-right { right: 0; background: linear-gradient(to left, rgba(10,34,57,1), rgba(10,34,57,0)); }
@@ -107,7 +113,6 @@
 }
 
 @media (max-width: 768px) {
-  .marquee-logo { width: 52px; height: 52px; }
   .integrations-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1.5rem;
@@ -116,5 +121,7 @@
   .integration-card {
     padding: 2rem 1.5rem;
   }
+  .marquee-name { font-size: 1.05rem; letter-spacing: .2px; }
+  .marquee-item { gap: 0.9rem; }
 }
 

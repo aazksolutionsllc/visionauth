@@ -27,7 +27,7 @@ function Integrations() {
             Works Seamlessly With Your Identity Ecosystem
           </h2>
           <p className="section-subtitle">
-            Integrate with leading identity and cloud platforms
+            Integrate with leading identity platforms
           </p>
         </div>
         <div className="logo-marquee" aria-label="Supported identity providers">
@@ -35,11 +35,7 @@ function Integrations() {
             <div className="marquee-track">
               {marqueeItems.map((item, i) => (
                 <div className="marquee-item" key={`mq-${i}-${item.name}`}>
-                  {item.imageSrc ? (
-                    <img src={item.imageSrc} alt="" aria-hidden="true" className="marquee-logo" />
-                  ) : (
-                    <span className="marquee-logo-fallback" aria-hidden="true">{item.logo}</span>
-                  )}
+                  <span className="marquee-name marquee-pill">{item.name}</span>
                 </div>
               ))}
             </div>
