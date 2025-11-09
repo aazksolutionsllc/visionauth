@@ -162,7 +162,7 @@
 }
 
 .hero-mockup { 
-  margin: 1.2rem auto 2.6rem; 
+  margin: 1.8rem auto 3.2rem; 
   display: flex; 
   justify-content: center;
   perspective: 1200px;
@@ -252,6 +252,9 @@
   .hero-ctas {
     flex-direction: column;
     align-items: center;
+  }
+  .hero-mockup {
+    margin: 1.6rem auto 3rem;
   }
   .mockup-frame {
     width: min(720px, 98%);

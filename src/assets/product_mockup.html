@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floqen API Platform Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .mockup-container {
+            perspective: 2000px;
+            max-width: 1400px;
+            width: 100%;
+        }
+        
+        .mockup-wrapper {
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+        
+        .mockup-wrapper:hover {
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        }
+        
+        .platform-mockup {
+            background: #0f0f23;
+            border-radius: 20px;
+            box-shadow: 
+                0 60px 120px rgba(0, 0, 0, 0.4),
+                0 30px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .mockup-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .nav-tab {
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .nav-tab.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .ai-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .ai-indicator {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            background: #0f0f23;
+        }
+        
+        .sidebar {
+            background: #1a1a2e;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 12px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 24px;
+        }
+        
+        .sidebar-title {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-item {
+            padding: 10px 8px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            margin-bottom: 4px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .sidebar-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: white;
+        }
+        
+        .sidebar-item.active {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+        }
+        
+        .workflow-canvas {
+            padding: 40px 40px 40px 20px;
+            position: relative;
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+        }
+        
+        .workflow-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+        
+        .workflow-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            position: relative;
+        }
+        
+        .workflow-step {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 16px;
+            padding: 20px 16px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.6s ease-out forwards;
+        }
+        
+        .workflow-step:nth-child(1) { animation-delay: 0.1s; }
+        .workflow-step:nth-child(2) { animation-delay: 0.3s; }
+        .workflow-step:nth-child(3) { animation-delay: 0.5s; }
+        .workflow-step:nth-child(4) { animation-delay: 0.7s; }
+        .workflow-step:nth-child(5) { animation-delay: 0.9s; }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+        
+        .step-title {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .step-description {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .step-icon {
+            display: none;
+        }
+        
+        .connector {
+            position: absolute;
+            top: 28px;
+            left: calc(100% + 8px);
+            width: 16px;
+            height: 2px;
+            background: linear-gradient(to right, #667eea, transparent);
+        }
+        
+        .connector::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: -3px;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #667eea;
+            border-top: 2px solid #667eea;
+            transform: rotate(45deg);
+        }
+        
+        .ai-suggestion-box {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 100%;
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(34, 197, 94, 0.1));
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeInRight 0.8s ease-out 1.2s forwards;
+        }
+        
+        .security-box {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeInRight 0.8s ease-out 1.4s forwards;
+        }
+        
+        .info-boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .ai-suggestion-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .ai-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .ai-suggestion-title {
+            color: #4ade80;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .security-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .security-title {
+            color: #3b82f6;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .identity-providers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .provider-badge {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .ai-suggestion-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        .code-preview {
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .code-title {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .code-content {
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #a78bfa;
+        }
+        
+        .code-line {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .line-number {
+            color: rgba(255, 255, 255, 0.3);
+            user-select: none;
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #667eea;
+            animation: typing 2s steps(40) 2s forwards, blink-caret 0.75s step-end infinite;
+            width: 0;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #667eea; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mockup-container">
+        <div class="mockup-wrapper">
+            <div class="platform-mockup">
+                <div class="mockup-header">
+                    <div class="header-left">
+                        <div class="logo">
+                            <div class="logo-icon">F</div>
+                            Floqen
+                        </div>
+                        <div class="nav-tabs">
+                            <div class="nav-tab active">Design</div>
+                            <div class="nav-tab">Publish</div>
+                            <div class="nav-tab">Test</div>
+                            <div class="nav-tab">Subscribe</div>
+                            <div class="nav-tab">Consume</div>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <div class="ai-badge">
+                            <div class="ai-indicator"></div>
+                            AI Driven
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="main-content">
+                    <div class="sidebar">
+                        <div class="sidebar-section">
+                            <div class="sidebar-title">Workspace</div>
+                            <div class="sidebar-item active">
+                                <span>🎨</span> Design APIs
+                            </div>
+                            <div class="sidebar-item">
+                                <span>🚀</span> Publish Securely
+                            </div>
+                            <div class="sidebar-item">
+                                <span>🧪</span> Testing Suite
+                            </div>
+                            <div class="sidebar-item">
+                                <span>✅</span> Subscriptions
+                            </div>
+                            <div class="sidebar-item">
+                                <span>💼</span> Workspaces
+                            </div>
+                        </div>
+                        <div class="sidebar-section">
+                            <div class="sidebar-title">Recent</div>
+                            <div class="sidebar-item">
+                                <span>📄</span> Payment API
+                            </div>
+                            <div class="sidebar-item">
+                                <span>📄</span> User Service
+                            </div>
+                            <div class="sidebar-item">
+                                <span>📄</span> Analytics API
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-canvas">
+                        <div class="workflow-title">Unified AI Driven Platform</div>
+                        
+                        <div class="workflow-container">
+                            <div class="workflow-step">
+                                <div class="step-icon">🎨</div>
+                                <div class="step-number">1</div>
+                                <div class="step-title">Design</div>
+                                <div class="step-description">AI-generated specs</div>
+                                <div class="connector"></div>
+                            </div>
+                            
+                            <div class="workflow-step">
+                                <div class="step-icon">🚀</div>
+                                <div class="step-number">2</div>
+                                <div class="step-title">Publish</div>
+                                <div class="step-description">Secure catalog</div>
+                                <div class="connector"></div>
+                            </div>
+                            
+                            <div class="workflow-step">
+                                <div class="step-icon">🧪</div>
+                                <div class="step-number">3</div>
+                                <div class="step-title">Test</div>
+                                <div class="step-description">Automated validation</div>
+                                <div class="connector"></div>
+                            </div>
+                            
+                            <div class="workflow-step">
+                                <div class="step-icon">✅</div>
+                                <div class="step-number">4</div>
+                                <div class="step-title">Subscribe</div>
+                                <div class="step-description">Access management</div>
+                                <div class="connector"></div>
+                            </div>
+                            
+                            <div class="workflow-step">
+                                <div class="step-icon">⚡</div>
+                                <div class="step-number">5</div>
+                                <div class="step-title">Consume</div>
+                                <div class="step-description">Shared workspaces</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-boxes">
+                            <div class="ai-suggestion-box">
+                                <div class="ai-suggestion-header">
+                                    <div class="ai-icon">AI</div>
+                                    <div class="ai-suggestion-title">Smart Suggestion</div>
+                                </div>
+                                <div class="ai-suggestion-text">
+                                    Based on your description, I've detected you need authentication. Would you like me to add OAuth 2.0 endpoints and JWT token validation?
+                                </div>
+                            </div>
+                            
+                            <div class="security-box">
+                                <div class="ai-suggestion-header">
+                                    <div class="security-icon">🔒</div>
+                                    <div class="security-title">Enterprise Security</div>
+                                </div>
+                                <div class="ai-suggestion-text">
+                                    Secure your APIs with enterprise-grade identity providers
+                                </div>
+                                <div class="identity-providers">
+                                    <div class="provider-badge">Azure</div>
+                                    <div class="provider-badge">Okta</div>
+                                    <div class="provider-badge">Ping Identity</div>
+                                    <div class="provider-badge">Auth0</div>
+                                    <div class="provider-badge">AWS Cognito</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-preview">
+                            <div class="code-header">
+                                <div class="code-title">Generated OpenAPI Specification</div>
+                            </div>
+                            <div class="code-content">
+                                <div class="code-line">
+                                    <span class="line-number">1</span>
+                                    <span class="typing-animation">openapi: 3.0.0</span>
+                                </div>
+                                <div class="code-line" style="animation-delay: 2.2s; opacity: 0; animation: fadeIn 0.3s ease-out 2.2s forwards;">
+                                    <span class="line-number">2</span>
+                                    <span>info:</span>
+                                </div>
+                                <div class="code-line" style="animation-delay: 2.4s; opacity: 0; animation: fadeIn 0.3s ease-out 2.4s forwards;">
+                                    <span class="line-number">3</span>
+                                    <span>  title: Payment API</span>
+                                </div>
+                                <div class="code-line" style="animation-delay: 2.6s; opacity: 0; animation: fadeIn 0.3s ease-out 2.6s forwards;">
+                                    <span class="line-number">4</span>
+                                    <span>  version: 1.0.0</span>
+                                </div>
+                                <div class="code-line" style="animation-delay: 2.8s; opacity: 0; animation: fadeIn 0.3s ease-out 2.8s forwards;">
+                                    <span class="line-number">5</span>
+                                    <span>paths:</span>
+                                </div>
+                                <div class="code-line" style="animation-delay: 3s; opacity: 0; animation: fadeIn 0.3s ease-out 3s forwards;">
+                                    <span class="line-number">6</span>
+                                    <span>  /payments:</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
