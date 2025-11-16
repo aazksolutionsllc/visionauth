@@ -1,6 +1,6 @@
 # VisionAuth - Where APIs are born secure
 
-A modern, professional website for Floqen — a platform that unifies the API lifecycle: Design → Publish Securely → Test → Subscribe → Consume.
+A modern, professional website for VisionAuth — a platform that unifies the API lifecycle: Design → Publish Securely → Test → Subscribe → Consume.
 
 ## 🎨 Design Theme
 
@@ -42,7 +42,7 @@ The built files will be in the `dist` directory.
 ## 📁 Project Structure
 
 ```
-floqen/
+visionauth/
 ├── index.html
 ├── package.json
 ├── vite.config.js
@@ -95,5 +95,5 @@ floqen/
 
 ## 📝 License
 
-© 2024 Floqen. All rights reserved.
+© 2025 AAZKSOLUTIONS LLC. All rights reserved.
 
