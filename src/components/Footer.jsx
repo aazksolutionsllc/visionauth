@@ -7,7 +7,7 @@ function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-brand">
-            <span className="footer-logo">Floqen</span>
+            <span className="footer-logo">VisionAuth</span>
             <p className="footer-tagline">Where APIs are born secure</p>
           </div>
         </div>

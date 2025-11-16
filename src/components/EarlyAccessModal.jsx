@@ -41,7 +41,7 @@ function EarlyAccessModal({ open, onClose }) {
     setSubmitMessage('')
     if (!validate()) return
     const FORMSPREE_ID =
-      (typeof window !== 'undefined' && window.FLOQEN_FORMSPREE_ID) ||
+      (typeof window !== 'undefined' && window.VISIONAUTH_FORMSPREE_ID) ||
       import.meta.env.VITE_FORMSPREE_ID ||
       'REPLACE_WITH_FORMSPREE_ID'
     if (!FORMSPREE_ID || FORMSPREE_ID.includes('REPLACE_WITH')) {
@@ -56,7 +56,7 @@ function EarlyAccessModal({ open, onClose }) {
       fullName: form.fullName,
       company: form.company,
       phone: form.phone,
-      _subject: 'Floqen Early Access Request',
+      _subject: 'VisionAuth Early Access Request',
       _format: 'json',
     }
     try {
@@ -69,7 +69,7 @@ function EarlyAccessModal({ open, onClose }) {
       if (!res.ok) throw new Error('Request failed')
       setSubmitting(false)
       setSuccess(true)
-      setSubmitMessage('Thank you — the Floqen team will review your request and get back to you shortly.')
+      setSubmitMessage('Thank you — the VisionAuth team will review your request and get back to you shortly.')
     } catch (err) {
       setSubmitting(false)
       setSubmitMessage('Something went wrong. Please try again.')

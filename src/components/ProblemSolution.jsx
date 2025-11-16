@@ -84,7 +84,7 @@ function ProblemSolution() {
             </div>
             <h3 className="ps-title">The Solution</h3>
             <p className="ps-text">
-              Floqen replaces this fragmentation with a single AI-driven platform that brings every phase from design to approval together. By embedding AI-driven design, adaptive testing, and intelligent governance into each step, Floqen eliminates tool sprawl, streamlines collaboration, and delivers APIs that are born secure, continuously optimized, and ready to evolve.
+              VisionAuth replaces this fragmentation with a single AI-driven platform that brings every phase from design to approval together. By embedding AI-driven design, adaptive testing, and intelligent governance into each step, VisionAuth eliminates tool sprawl, streamlines collaboration, and delivers APIs that are born secure, continuously optimized, and ready to evolve.
             </p>
           </div>
         </div>

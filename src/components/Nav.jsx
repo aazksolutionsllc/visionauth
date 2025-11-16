@@ -40,7 +40,7 @@ function Nav({ onOpenEarlyAccess }) {
           <a href="#integrations" className="nav-link">Integrations</a>
         </div>
         <div className="nav-logo">
-          <span className="logo-text">FLOQEN</span>
+          <span className="logo-text">VisionAuth</span>
         </div>
         <div className="nav-right">
           <a href="#about" className="nav-link">About</a>
@@ -64,7 +64,7 @@ function Nav({ onOpenEarlyAccess }) {
       >
         <div className="mobile-inner">
           <div className="mobile-header">
-            <span className="logo-text">FLOQEN</span>
+            <span className="logo-text">VisionAuth</span>
             <button
               className="nav-close"
               aria-label="Close menu"
