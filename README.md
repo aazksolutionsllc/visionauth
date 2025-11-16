@@ -1,4 +1,4 @@
-# Floqen - Where APIs are born secure
+# VisionAuth - Where APIs are born secure
 
 A modern, professional website for Floqen — a platform that unifies the API lifecycle: Design → Publish Securely → Test → Subscribe → Consume.
 
