@@ -95,5 +95,5 @@ visionauth/
 
 ## 📝 License
 
-© 2025 AAZKSOLUTIONS LLC. All rights reserved.
+© 2025 AA & ZK Solutions. All rights reserved.
 

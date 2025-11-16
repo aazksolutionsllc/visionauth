@@ -14,7 +14,7 @@ function Footer() {
         
         <div className="footer-bottom">
           <p className="copyright">
-            © 2025 AAZKSOLUTIONS LLC
+            © 2025 AA & ZK Solutions
           </p>
         </div>
       </div>
